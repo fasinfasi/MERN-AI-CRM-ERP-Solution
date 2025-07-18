@@ -3,10 +3,11 @@ const { routesList } = require('@/models/utils');
 
 const { globSync } = require('glob');
 const path = require('path');
+const fs = require('fs');
 
-const pattern = './src/controllers/appControllers/*/**/';
-const controllerDirectories = globSync(pattern).map((filePath) => {
-  return path.basename(filePath);
+const pattern = './src/controllers/appControllers/*/';
+const controllerDirectories = globSync(pattern).map((folderPath) => {
+  return path.basename(folderPath);
 });
 
 const appControllers = () => {
@@ -14,15 +15,25 @@ const appControllers = () => {
   const hasCustomControllers = [];
 
   controllerDirectories.forEach((controllerName) => {
-    try {
-      const customController = require('@/controllers/appControllers/' + controllerName);
+    const controllerFilePath = path.join(
+      __dirname,
+      controllerName,
+      controllerName + '.js'
+    );
 
-      if (customController) {
-        hasCustomControllers.push(controllerName);
-        controllers[controllerName] = customController;
+    if (fs.existsSync(controllerFilePath)) {
+      try {
+        const customController = require(controllerFilePath);
+
+        if (customController) {
+          hasCustomControllers.push(controllerName);
+          controllers[controllerName] = customController;
+        }
+      } catch (err) {
+        throw new Error(
+          `Error loading controller ${controllerName}: ${err.message}`
+        );
       }
-    } catch (err) {
-      throw new Error(err.message);
     }
   });
 

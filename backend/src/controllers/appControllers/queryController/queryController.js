@@ -1,4 +1,4 @@
-const Query = require('../../models/appModels/Query');
+const Query = require('../../../models/appModels/Query');
 
 // GET /api/queries?page=&limit=
 exports.list = async (req, res) => {
