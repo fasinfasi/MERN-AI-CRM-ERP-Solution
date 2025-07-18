@@ -31,7 +31,8 @@ This project is a professional implementation of a full-stack CRM based on the I
 <img src="./screenshots/db_client_02.png" width="600" alt="MongoDB Compass View" />
 <img src="./screenshots/db_invoice_03.png" width="600" alt="MongoDB Compass View" />
 <img src="./screenshots/db_quote_04.png" width="600" alt="MongoDB Compass View" />
-<img src="./screenshots/db_payments_05.png" width="600" alt="MongoDB Compass View" />
+<img src="./screenshots/ui_payments_05.png" width="600" alt="MongoDB Compass View" />
+
 
 ---
 
@@ -94,4 +95,4 @@ After that run the frontend:
 ```
 npm run dev
 ```
-
+After that you can see your ui on **http://localhost:3000/**  &  backend will run on **http://localhost:8888/**
