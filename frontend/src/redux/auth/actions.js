@@ -132,7 +132,7 @@ export const logout = () => async (dispatch) => {
       payload: data.result,
     });
   } else {
-    // on lgout success
+    // on logout success
   }
 };
 
