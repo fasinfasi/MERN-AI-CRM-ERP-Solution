@@ -20,18 +20,22 @@ This project is a professional implementation of a full-stack CRM based on the I
 ### 📸 Screenshots – Local Environment
 
 #### 🔷 React Frontend UI
-<img src="./screenshots/ui_homepage.png" width="600" alt="Frontend UI" />
-<img src="./screenshots/ui_dashboard.png" width="600" alt="Frontend UI" />
-<img src="./screenshots/ui_invoice.png" width="600" alt="Frontend UI" />
-<img src="./screenshots/ui_quote.png" width="600" alt="Frontend UI" />
-<img src="./screenshots/ui_payment.png" width="600" alt="Frontend UI" />
+<p>
+<img src="./screenshots/ui_homepage.png" width="500" alt="Frontend UI" />
+<img src="./screenshots/ui_dashboard.png" width="500" alt="Frontend UI" />
+<img src="./screenshots/ui_invoice.png" width="500" alt="Frontend UI" />
+<img src="./screenshots/ui_quote.png" width="500" alt="Frontend UI" />
+<img src="./screenshots/ui_payment.png" width="500" alt="Frontend UI" />
+</p>
 
 #### 🟢 MongoDB Compass
-<img src="./screenshots/db_admin_01.png" width="600" alt="MongoDB Compass View" />
-<img src="./screenshots/db_client_02.png" width="600" alt="MongoDB Compass View" />
-<img src="./screenshots/db_invoice_03.png" width="600" alt="MongoDB Compass View" />
-<img src="./screenshots/db_quote_04.png" width="600" alt="MongoDB Compass View" />
-<img src="./screenshots/ui_payments_05.png" width="600" alt="MongoDB Compass View" />
+<p>
+<img src="./screenshots/db_admin_01.png" width="500" alt="MongoDB Compass View" />
+<img src="./screenshots/db_client_02.png" width="500" alt="MongoDB Compass View" />
+<img src="./screenshots/db_invoice_03.png" width="500" alt="MongoDB Compass View" />
+<img src="./screenshots/db_quote_04.png" width="500" alt="MongoDB Compass View" />
+<img src="./screenshots/ui_payments_05.png" width="500" alt="MongoDB Compass View" />
+</p>
 
 ---
 
@@ -69,6 +73,26 @@ In this phase, a fully functional **Query Management System** was added to the e
 - Add/Edit/Delete notes related to each query
 - Notes appear contextually within the query view
 
+### 🧠 Gemini AI Integration
+
+Gemini AI was integrated into the CRM system to enhance the **Query Management Module** with intelligent insights and automated assistance.
+
+#### 🔹 Features Enabled by Gemini AI
+
+- **Smart Suggestions**: Gemini provides context-aware recommendations for query resolutions based on existing data.
+- **Summarization**: Resolution content can be summarized or improved using AI assistance.
+- **Dynamic Insights**: Based on the customer's query description, Gemini offers insights for quicker triage or routing.
+
+#### 🔐 API Key Management
+
+- Gemini API Key is handled securely using `.env` environment variables.
+- The key is never exposed in frontend code.
+- Example usage:
+  ```env
+  GEMINI_API_KEY=your_google_gemini_key
+  ```
+
+
 ### 🧪 API Testing
 
 Five Postman tests were created and verified:
@@ -79,7 +103,6 @@ Five Postman tests were created and verified:
 - ✅ Update query
 - ✅ Add and delete notes
 
-> The Postman collection is available in the `/tests/` folder as `phase2-api-tests.postman_collection.json`.
 
 ---
 
@@ -96,21 +119,25 @@ Five Postman tests were created and verified:
 
 ### 📸 Screenshots – Local Environment
 #### 🔷 React Frontend UI
-<img src="./screenshots/p2_ui_01.png" width="600" alt="Frontend UI" />
-<img src="./screenshots/p2_ui_02.png" width="600" alt="Frontend UI" />
-<img src="./screenshots/p2_ui_03.png" width="600" alt="Frontend UI" />
-<img src="./screenshots/p2_ui_04.png" width="600" alt="Frontend UI" />
-<img src="./screenshots/p2_ui_ai_01.png" width="600" alt="Frontend AI Intergrated" />
-<img src="./screenshots/p2_ui_ai_02.png" width="600" alt="Frontend AI Intergrated" />
-<img src="./screenshots/p2_ui_ai_03.png" width="600" alt="Frontend AI Intergrated" />
-<img src="./screenshots/p2_ui_ai_04.png" width="600" alt="Frontend AI Intergrated" />
+<p>
+<img src="./screenshots/p2_ui_01.png" width="500" alt="Frontend UI" />
+<img src="./screenshots/p2_ui_02.png" width="500" alt="Frontend UI" />
+<img src="./screenshots/p2_ui_03.png" width="500" alt="Frontend UI" />
+<img src="./screenshots/p2_ui_04.png" width="500" alt="Frontend UI" />
+<img src="./screenshots/p2_ui_ai_01.png" width="500" alt="Frontend AI Intergrated" />
+<img src="./screenshots/p2_ui_ai_02.png" width="500" alt="Frontend AI Intergrated" />
+<img src="./screenshots/p2_ui_ai_03.png" width="500" alt="Frontend AI Intergrated" />
+<img src="./screenshots/p2_ui_ai_04.png" width="500" alt="Frontend AI Intergrated" />
+</p>
 
 #### 🟣 APIs Tested (Postman)
-<img src="./screenshots/api_testing_01.png" width="600" alt="Postman API tested" />
-<img src="./screenshots/api_testing_02.png" width="600" alt="Postman API tested" />
+<p>
+<img src="./screenshots/api_testing_01.png" width="500" alt="Postman API tested" />
+<img src="./screenshots/api_testing_02.png" width="500" alt="Postman API tested" />
+</p>
 
 #### 🟢MongoDB (query data)
-<img src="./screenshots/api_db_01.png" width="600" alt="Postman API tested" />
+<img src="./screenshots/p2_db_01.png" width="600" alt="MongoDB" />
 
 ---
 
@@ -126,11 +153,13 @@ then navigate to directory
 cd MERN-AI-CRM-ERP-Solution
 ```
 
-### 2. Update MongoDB URI
-In the .env file, find the line that reads:
-DATABASE="uri"
+### 2. Update URI & APIs
+In the .env file(backend&frontend), find the line that reads:
+DATABASE="mongodb_uri"
+VITE_GEMINI_API_KEY="your_gemini_api_key_here"
+JWT_SECRET= "you_jwt_key"
+GEMINI_API_KEY="your_gemini_api_key_here"
 
-Replace "uri" with the actual URI of your MongoDB database.
 
 ### 3. Install Backend Dependencies & Run
 In your terminal, navigate to the /backend directory
