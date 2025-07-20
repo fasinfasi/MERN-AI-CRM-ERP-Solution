@@ -22,6 +22,8 @@ import useResponsive from '@/hooks/useResponsive';
 
 import storePersist from '@/redux/storePersist';
 
+import AIAssistant from '@/components/AIAssistant/AIAssistant';
+
 export default function ErpCrmApp() {
   const { Content } = Layout;
 
@@ -66,6 +68,7 @@ export default function ErpCrmApp() {
               }}
             >
               <AppRouter />
+              <AIAssistant />
             </Content>
           </Layout>
         ) : (
@@ -81,6 +84,7 @@ export default function ErpCrmApp() {
               }}
             >
               <AppRouter />
+              <AIAssistant />
             </Content>
           </Layout>
         )}

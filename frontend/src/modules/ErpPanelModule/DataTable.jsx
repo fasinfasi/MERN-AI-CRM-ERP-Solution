@@ -13,7 +13,10 @@ import {
 import { Dropdown, Table, Button } from 'antd';
 import { PageHeader } from '@ant-design/pro-layout';
 
+import { Select } from 'antd';
 import AutoCompleteAsync from '@/components/AutoCompleteAsync';
+
+const { Option } = Select;
 import { useSelector, useDispatch } from 'react-redux';
 import useLanguage from '@/locale/useLanguage';
 import { erp } from '@/redux/erp/actions';
@@ -173,6 +176,19 @@ export default function DataTable({ config, extra = [] }) {
     dispatch(erp.list({ entity, options }));
   };
 
+  const handleStatusFilter = (status) => {
+    if (status) {
+      const options = { filter: 'status', equal: status };
+      dispatch(erp.list({ entity, options }));
+    } else {
+      // Clear filter - load all queries
+      dispatch(erp.list({ entity }));
+    }
+  };
+
+  // Only show status filter for query entity
+  const showStatusFilter = entity === 'query';
+
   return (
     <>
       <PageHeader
@@ -181,16 +197,28 @@ export default function DataTable({ config, extra = [] }) {
         onBack={() => window.history.back()}
         backIcon={<ArrowLeftOutlined />}
         extra={[
-          <AutoCompleteAsync
-            key={`${uniqueId()}`}
-            entity={searchConfig?.entity}
-            displayLabels={['name']}
-            searchFields={'name'}
-            onChange={filterTable}
-            // redirectLabel={'Add New Client'}
-            // withRedirect
-            // urlToRedirect={'/customer'}
-          />,
+          showStatusFilter ? (
+            <Select
+              key={`${uniqueId()}`}
+              placeholder={translate('Filter by status')}
+              style={{ width: 200, marginRight: 8 }}
+              onChange={handleStatusFilter}
+              allowClear
+            >
+              <Option value="Open">{translate('Open')}</Option>
+              <Option value="InProgress">{translate('In Progress')}</Option>
+              <Option value="Closed">{translate('Closed')}</Option>
+            </Select>
+          ) : (
+            <AutoCompleteAsync
+              key={`${uniqueId()}`}
+              entity={searchConfig?.entity}
+              displayLabels={['name']}
+              searchFields={'name'}
+              onChange={filterTable}
+              style={{ minWidth: '200px' }}
+            />
+          ),
           <Button onClick={handelDataTableLoad} key={`${uniqueId()}`} icon={<RedoOutlined />}>
             {translate('Refresh')}
           </Button>,
@@ -209,7 +237,8 @@ export default function DataTable({ config, extra = [] }) {
         pagination={pagination}
         loading={listIsLoading}
         onChange={handelDataTableLoad}
-        scroll={{ x: true }}
+        scroll={{ x: 'max-content' }}
+        size="middle"
       />
     </>
   );

@@ -40,3 +40,42 @@
 .profileDropdownInfo p {
   margin: 0;
 }
+
+/* Responsive Header Styles */
+@media only screen and (max-width: 768px) {
+  .headerIcon.ant-avatar {
+    margin-left: 5px;
+    margin-top: 10px;
+  }
+  
+  .headerIcon .last {
+    margin-right: 15px;
+  }
+  
+  .profileDropdown {
+    min-width: 150px;
+  }
+  
+  .profileDropdownInfo {
+    padding-left: 10px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .headerIcon.ant-avatar {
+    margin-left: 3px;
+    margin-top: 8px;
+  }
+  
+  .headerIcon .last {
+    margin-right: 10px;
+  }
+  
+  .profileDropdown {
+    min-width: 120px;
+  }
+  
+  .profileDropdownInfo {
+    padding-left: 8px;
+  }
+}

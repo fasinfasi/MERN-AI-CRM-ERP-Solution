@@ -39,9 +39,9 @@ const colors = [
   { value: 'free', label: 'free', color: 'green', icon: '💡' },
   
   // Query statuses
-  { value: 'open', label: 'open', color: 'orange', icon: '📋' },
-  { value: 'inprogress', label: 'in progress', color: 'blue', icon: '🔄' },
-  { value: 'closed', label: 'closed', color: 'green', icon: '✅' },
+  { value: 'Open', label: 'Open', color: 'green', icon: '📋' },
+  { value: 'InProgress', label: 'In Progress', color: 'orange', icon: '🔄' },
+  { value: 'Closed', label: 'Closed', color: 'red', icon: '✅' },
 ];
 
 const statusTagColorList = (tags = []) => {

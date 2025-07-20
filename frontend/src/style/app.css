@@ -9,3 +9,79 @@
 @import './partials/sidePanel.css';
 @import './partials/collapseBox.css';
 @import './partials/erp.css';
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .ant-layout-content {
+    max-width: 95% !important;
+    margin: 15px auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .ant-layout-content {
+    max-width: 98% !important;
+    margin: 10px auto !important;
+    padding: 0 10px !important;
+  }
+  
+  .ant-page-header {
+    padding: 16px 0 !important;
+  }
+  
+  .ant-page-header-extra {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .ant-table {
+    font-size: 12px;
+  }
+  
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td {
+    padding: 8px 4px !important;
+  }
+  
+  .ant-form-item {
+    margin-bottom: 12px;
+  }
+  
+  .ant-card {
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ant-layout-content {
+    max-width: 100% !important;
+    margin: 5px auto !important;
+    padding: 0 5px !important;
+  }
+  
+  .ant-page-header-title {
+    font-size: 16px !important;
+  }
+  
+  .ant-table {
+    font-size: 11px;
+  }
+  
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td {
+    padding: 4px 2px !important;
+  }
+  
+  .ant-btn {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+  
+  .ant-select {
+    font-size: 12px;
+  }
+  
+  .ant-input {
+    font-size: 12px;
+  }
+}

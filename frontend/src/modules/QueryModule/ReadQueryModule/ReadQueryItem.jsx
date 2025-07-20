@@ -1,4 +1,5 @@
-import { PageHeader, Button, Descriptions, Divider, Row, Col, Statistic, Tag } from 'antd';
+import { Button, Descriptions, Divider, Row, Col, Statistic, Tag } from 'antd';
+import { PageHeader } from '@ant-design/pro-layout';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -16,7 +17,6 @@ export default function ReadQueryItem({ config }) {
   const { result: currentQuery, isLoading } = useSelector(selectReadItem);
   const { entity } = config;
 
-  console.log('ReadQueryItem - currentQuery:', currentQuery, 'isLoading:', isLoading);
   if (isLoading) return <div>Loading...</div>;
   if (!currentQuery) return <div>No query data found</div>;
 
@@ -78,7 +78,14 @@ export default function ReadQueryItem({ config }) {
         }}
       >
         <Row>
-          <Statistic title={translate('Status')} value={translate(currentQuery.status)} />
+          <Statistic 
+            title={translate('Status')} 
+            value={
+              <Tag color={getStatusColor(currentQuery.status)}>
+                {translate(currentQuery.status)}
+              </Tag>
+            } 
+          />
           <Statistic
             title={translate('Created')}
             value={new Date(currentQuery.created).toLocaleDateString()}
@@ -90,7 +97,7 @@ export default function ReadQueryItem({ config }) {
       </PageHeader>
       <Divider dashed />
       
-      <Descriptions title={`${translate('Customer')} : ${currentQuery.customer?.name || currentQuery.customer || 'N/A'}`}>
+      <Descriptions title={`${translate('Customer')} : ${currentQuery.customer?.name || (currentQuery.customer ? `ID: ${currentQuery.customer}` : 'N/A')}`}>
         <Descriptions.Item label={translate('Description')} span={3}>
           {currentQuery.description}
         </Descriptions.Item>

@@ -27,13 +27,18 @@ export default function Query() {
       dataIndex: 'description',
       ellipsis: true,
     },
-    {
-      title: translate('Status'),
-      dataIndex: 'status',
-      render: (status) => (
-        <Tag color={tagColor(status)}>{translate(status)}</Tag>
-      ),
-    },
+          {
+        title: translate('Status'),
+        dataIndex: 'status',
+        render: (status) => {
+          const statusConfig = tagColor(status);
+          return (
+            <Tag color={statusConfig.color || 'default'}>
+              {translate(status)}
+            </Tag>
+          );
+        },
+      },
     {
       title: translate('Created'),
       dataIndex: 'created',

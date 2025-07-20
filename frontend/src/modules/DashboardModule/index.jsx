@@ -114,10 +114,12 @@ export default function DashboardModule() {
         entity={entity}
         statistics={
           !isLoading &&
-          result?.performance?.map((item) => ({
-            tag: item?.status,
+          result?.performance &&
+          Array.isArray(result.performance) &&
+          result.performance.map((item) => ({
+            tag: item?.status || 'Unknown',
             color: 'blue',
-            value: item?.percentage,
+            value: item?.percentage || 0,
           }))
         }
       />

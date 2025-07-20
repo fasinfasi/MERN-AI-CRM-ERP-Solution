@@ -53,6 +53,12 @@
     height: 100%;
   }
 
+  .logo {
+    height: 35px;
+    margin: 10px 10px 20px 20px;
+    width: 120px;
+  }
+
   /* .ant-btn.mobile-sidebar-btn {
     display: block;
     position: absolute;
@@ -61,5 +67,17 @@
 
   .mobile-sidebar-wraper {
     display: block;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .logo {
+    height: 30px;
+    margin: 8px 8px 15px 15px;
+    width: 100px;
+  }
+  
+  .navigation {
+    height: 100vh;
   }
 }

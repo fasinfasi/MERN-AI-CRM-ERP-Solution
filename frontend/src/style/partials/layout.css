@@ -13,3 +13,39 @@
 .wideNavigation {
   margin-left: 220px;
 }
+
+/* Responsive Layout Styles */
+@media only screen and (max-width: 1200px) {
+  .wideAppContainer {
+    max-width: 95%;
+  }
+  
+  .appContainer {
+    max-width: 95%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .wideAppContainer {
+    max-width: 98%;
+  }
+  
+  .appContainer {
+    max-width: 98%;
+  }
+  
+  .smallNavigation,
+  .wideNavigation {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .wideAppContainer {
+    max-width: 100%;
+  }
+  
+  .appContainer {
+    max-width: 100%;
+  }
+}

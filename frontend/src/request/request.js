@@ -253,11 +253,14 @@ const request = {
   summary: async ({ entity, options = {} }) => {
     try {
       includeToken();
-      let query = '?';
-      for (var key in options) {
-        query += key + '=' + options[key] + '&';
+      let query = '';
+      if (options && Object.keys(options).length > 0) {
+        query = '?';
+        for (var key in options) {
+          query += key + '=' + options[key] + '&';
+        }
+        query = query.slice(0, -1);
       }
-      query = query.slice(0, -1);
       const response = await axios.get(entity + '/summary' + query);
 
       successHandler(response, {
