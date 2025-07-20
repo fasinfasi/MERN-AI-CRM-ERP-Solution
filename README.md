@@ -33,6 +33,53 @@ This project is a professional implementation of a full-stack CRM based on the I
 <img src="./screenshots/db_quote_04.png" width="600" alt="MongoDB Compass View" />
 <img src="./screenshots/ui_payments_05.png" width="600" alt="MongoDB Compass View" />
 
+---
+
+## ✅ Phase 2: Query Management Module
+
+In this phase, a fully functional **Query Management System** was added to the existing CRM with API integration, frontend UI, and Postman-based API testing.
+
+### 📦 Backend – `/api/queries` Endpoints
+
+| Method | Endpoint                             | Description                                 |
+|--------|--------------------------------------|---------------------------------------------|
+| GET    | `/api/queries?page=1&limit=10`       | Retrieve paginated list of queries          |
+| POST   | `/api/queries`                       | Create a new query                          |
+| GET    | `/api/queries/:id`                   | Get a query by ID                           |
+| PUT    | `/api/queries/:id`                   | Update query fields                         |
+| POST   | `/api/queries/:id/notes`             | Add a note to the query                     |
+| DELETE | `/api/queries/:id/notes/:noteId`     | Delete a specific note from a query         |
+
+### 🖥️ Frontend Features (React)
+
+#### 🔹 Query List View
+- Table with the following columns:
+  - Customer Name (prepopulated)
+  - Description
+  - Created Date
+  - Status (Open/InProgress/Closed)
+  - Resolution (truncated)
+- Includes pagination controls and status filters
+
+#### 🔹 Query Form
+- “Add Query” form modal for creating new queries
+- Edit functionality for updating status, resolution, description, etc.
+
+#### 🔹 Notes Sub-System
+- Add/Edit/Delete notes related to each query
+- Notes appear contextually within the query view
+
+### 🧪 API Testing
+
+Five Postman tests were created and verified:
+
+- ✅ Create query
+- ✅ Retrieve all queries (paginated)
+- ✅ Get single query by ID
+- ✅ Update query
+- ✅ Add and delete notes
+
+> The Postman collection is available in the `/tests/` folder as `phase2-api-tests.postman_collection.json`.
 
 ---
 
@@ -43,6 +90,27 @@ This project is a professional implementation of a full-stack CRM based on the I
 - Express.js
 - MongoDB
 - Git & GitHub
+- Postman
+
+---
+
+### 📸 Screenshots – Local Environment
+#### 🔷 React Frontend UI
+<img src="./screenshots/p2_ui_01.png" width="600" alt="Frontend UI" />
+<img src="./screenshots/p2_ui_02.png" width="600" alt="Frontend UI" />
+<img src="./screenshots/p2_ui_03.png" width="600" alt="Frontend UI" />
+<img src="./screenshots/p2_ui_04.png" width="600" alt="Frontend UI" />
+<img src="./screenshots/p2_ui_ai_01.png" width="600" alt="Frontend AI Intergrated" />
+<img src="./screenshots/p2_ui_ai_02.png" width="600" alt="Frontend AI Intergrated" />
+<img src="./screenshots/p2_ui_ai_03.png" width="600" alt="Frontend AI Intergrated" />
+<img src="./screenshots/p2_ui_ai_04.png" width="600" alt="Frontend AI Intergrated" />
+
+#### 🟣 APIs Tested (Postman)
+<img src="./screenshots/api_testing_01.png" width="600" alt="Postman API tested" />
+<img src="./screenshots/api_testing_02.png" width="600" alt="Postman API tested" />
+
+#### 🟢MongoDB (query data)
+<img src="./screenshots/api_db_01.png" width="600" alt="Postman API tested" />
 
 ---
 

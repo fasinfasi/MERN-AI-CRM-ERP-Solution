@@ -1,0 +1,316 @@
+{
+    "info": {
+      "name": "IDURAR ERP CRM API Collection",
+      "description": "Complete API collection for testing IDURAR ERP CRM endpoints",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+      {
+        "key": "baseUrl",
+        "value": "http://localhost:5000/api",
+        "type": "string"
+      },
+      {
+        "key": "authToken",
+        "value": "",
+        "type": "string"
+      }
+    ],
+    "auth": {
+      "type": "bearer",
+      "bearer": [
+        {
+          "key": "token",
+          "value": "{{authToken}}",
+          "type": "string"
+        }
+      ]
+    },
+    "item": [
+      {
+        "name": "Authentication",
+        "item": [
+          {
+            "name": "Admin Login",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"email\": \"admin@demo.com\",\n  \"password\": \"your_password\"\n}"
+              },
+              "url": {
+                "raw": "{{baseUrl}}/admin/login",
+                "host": ["{{baseUrl}}"],
+                "path": ["admin", "login"]
+              }
+            },
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "exec": [
+                    "if (pm.response.code === 200) {",
+                    "    const response = pm.response.json();",
+                    "    if (response.success && response.result && response.result.token) {",
+                    "        pm.collectionVariables.set('authToken', response.result.token);",
+                    "        console.log('Token saved:', response.result.token);",
+                    "    }",
+                    "}"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Query Management",
+        "item": [
+          {
+            "name": "Create Query",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"customer\": \"customer_id_here\",\n  \"description\": \"Test query description\",\n  \"status\": \"Open\",\n  \"resolution\": \"Initial resolution\"\n}"
+              },
+              "url": {
+                "raw": "{{baseUrl}}/query/create",
+                "host": ["{{baseUrl}}"],
+                "path": ["query", "create"]
+              }
+            }
+          },
+          {
+            "name": "Get All Queries",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{baseUrl}}/query/list",
+                "host": ["{{baseUrl}}"],
+                "path": ["query", "list"]
+              }
+            }
+          },
+          {
+            "name": "Get Query by ID",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{baseUrl}}/query/read/:id",
+                "host": ["{{baseUrl}}"],
+                "path": ["query", "read", ":id"],
+                "variable": [
+                  {
+                    "key": "id",
+                    "value": "query_id_here"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "Update Query",
+            "request": {
+              "method": "PATCH",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"status\": \"InProgress\",\n  \"resolution\": \"Updated resolution\"\n}"
+              },
+              "url": {
+                "raw": "{{baseUrl}}/query/update/:id",
+                "host": ["{{baseUrl}}"],
+                "path": ["query", "update", ":id"],
+                "variable": [
+                  {
+                    "key": "id",
+                    "value": "query_id_here"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "Delete Query",
+            "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": {
+                "raw": "{{baseUrl}}/query/delete/:id",
+                "host": ["{{baseUrl}}"],
+                "path": ["query", "delete", ":id"],
+                "variable": [
+                  {
+                    "key": "id",
+                    "value": "query_id_here"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "Filter Queries by Status",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{baseUrl}}/query/filter?filter=status&equal=Open",
+                "host": ["{{baseUrl}}"],
+                "path": ["query", "filter"],
+                "query": [
+                  {
+                    "key": "filter",
+                    "value": "status"
+                  },
+                  {
+                    "key": "equal",
+                    "value": "Open"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "Add Note to Query",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"text\": \"This is a test note\",\n  \"author\": \"admin_id_here\"\n}"
+              },
+              "url": {
+                "raw": "{{baseUrl}}/query/:id/notes",
+                "host": ["{{baseUrl}}"],
+                "path": ["query", ":id", "notes"],
+                "variable": [
+                  {
+                    "key": "id",
+                    "value": "query_id_here"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Client Management",
+        "item": [
+          {
+            "name": "Create Client",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"name\": \"Test Client\",\n  \"email\": \"client@example.com\",\n  \"phone\": \"+1234567890\",\n  \"address\": \"123 Test Street\"\n}"
+              },
+              "url": {
+                "raw": "{{baseUrl}}/client/create",
+                "host": ["{{baseUrl}}"],
+                "path": ["client", "create"]
+              }
+            }
+          },
+          {
+            "name": "Get All Clients",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{baseUrl}}/client/list",
+                "host": ["{{baseUrl}}"],
+                "path": ["client", "list"]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Invoice Management",
+        "item": [
+          {
+            "name": "Create Invoice",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"client\": \"client_id_here\",\n  \"number\": 1001,\n  \"year\": 2024,\n  \"status\": \"draft\",\n  \"date\": \"2024-01-01\",\n  \"expiredDate\": \"2024-02-01\",\n  \"items\": [\n    {\n      \"itemName\": \"Test Item\",\n      \"description\": \"Test description\",\n      \"quantity\": 1,\n      \"price\": 100,\n      \"total\": 100\n    }\n  ],\n  \"taxRate\": 10\n}"
+              },
+              "url": {
+                "raw": "{{baseUrl}}/invoice/create",
+                "host": ["{{baseUrl}}"],
+                "path": ["invoice", "create"]
+              }
+            }
+          },
+          {
+            "name": "Get All Invoices",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{baseUrl}}/invoice/list",
+                "host": ["{{baseUrl}}"],
+                "path": ["invoice", "list"]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dashboard",
+        "item": [
+          {
+            "name": "Get Dashboard Summary",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{baseUrl}}/dashboard/summary",
+                "host": ["{{baseUrl}}"],
+                "path": ["dashboard", "summary"]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  } 
