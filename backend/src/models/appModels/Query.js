@@ -11,7 +11,7 @@ const querySchema = new mongoose.Schema({
     customer: { type: mongoose.Schema.ObjectId, ref: 'Client', required: true },
     description: { type: String, required: true },
     created: { type: Date, default: Date.now },
-    status: { type: String, enum: ['Open', 'Inprogress', 'Closed'], default: 'Open' },
+    status: { type: String, enum: ['Open', 'InProgress', 'Closed'], default: 'Open' },
     resolution: { type: String, default: '' },
     notes: [noteSchema],
     removed: { type: Boolean, default: false}

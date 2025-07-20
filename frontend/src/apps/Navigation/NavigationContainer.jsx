@@ -7,7 +7,7 @@ import { useAppContext } from '@/context/appContext';
 import useLanguage from '@/locale/useLanguage';
 import logoIcon from '@/style/images/logo-icon.svg';
 import logoText from '@/style/images/logo-text.svg';
-
+import { ProfileOutlined } from '@ant-design/icons';
 import useResponsive from '@/hooks/useResponsive';
 
 import {
@@ -69,6 +69,11 @@ function Sidebar({ collapsible, isMobile = false }) {
       key: 'quote',
       icon: <FileSyncOutlined />,
       label: <Link to={'/quote'}>{translate('quote')}</Link>,
+    },
+    {
+      key: 'query',
+      icon: <ProfileOutlined />,
+      label: <Link to={'/query'}>Query</Link>,
     },
     {
       key: 'payment',
